@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block leftbar %}
+<ul>
+    <h3>
+    <li><a href="/articles/all">Tomography</a></li>
+    <li><a href="/articles/all">Cancel the job</a></li>
+    </h3>
+</ul>
+{% endblock %}
+
+
+{% block content %}
+<h3>
+<p>Job {{article.title}} is submitted.</p>
+<p> Status: Job is done.</p>
+<!--<p> Figure is saved as {{article.save_to}}</p>-->
+<p> <a href="/static/images/{{article.save_to}}">Download Images</a>
+<p> Please see the result: </p>
+</h3>
+
+<img src="/static/images/{{article.save_to}}" width="350" height="350" align="center">
+<!--<img src="{% static "assets/images/{{article.save_to}}" %}" width="350" height="350" align="left">-->
+
+
+{% endblock %}
+
+{% block rightbar %}
+<h2 align="center">History</h2>
+{% for article in articles %}
+<div style="width:250px;height:40px;background-color:#e5eecc;" align="left">
+    <h4><p>{{ article.title }} , {{article.algorithm}} , {{article.angle_start}} , {{article.angle_end}} , {{article.angle_step}} </p></h2>
+    <!-- <p>{{ article.likes }} people liked this analysis</a></p> -->
+</div>
+{% endfor %}
+{% endblock %}
+
+

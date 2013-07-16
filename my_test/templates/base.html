@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>{% block title %}My Base Template{% endblock %}</title>
+
+    <style type="text/css">
+        body {
+            text-align: center;
+            width: 1850px;
+            height: 2200px;
+            margin: 0px 0px 0px 0px;
+            <!--padding: 0.5%;-->
+        }
+
+        #page {
+            width: 1850px;
+            height: 2200px;
+            text-align: left;
+            margin: 0px auto 500px auto;
+	    }
+
+        #topbar {
+            float: center;
+            width: 1850px;
+            height: 120px;
+            border: 1px; solid #300;
+	        background-color: #002186;
+            margin: 0px 0px;
+            padding: 1%;
+        }
+
+        #secondbar {
+            float: center;
+            width: 1850px;
+            height: 22px;
+            border: 1px; solid #300;
+	        background-color: #000000;
+            margin: 0px 0px;
+            padding: 1%;
+        }
+        
+
+        #leftbar {
+            float: center;
+            width: 250px;
+            height: 2000px;
+            border: 0px; solid #000000; /*#300;*/
+            background-color: #A4A5AA;
+            margin: 0px 0px;
+            padding: 1%;
+        }
+
+        
+        #content {
+            text-align: left;
+            margin: -2020px 300px;
+            width: 1250px;
+            height: 2000px;
+            border: 0px solid #300;
+            padding: 1%;
+        }
+        
+        #rightbar{
+            float:center;
+            width: 250px;
+            height: 2000px;
+            border: 0px solid #300;
+	        background-color: #D6E0FF;/* #e5eecc;*/
+            margin: -2037px 1600px;
+            padding: 1%;
+        }
+    </style>
+</head>
+
+
+<body style="background-color:white;">
+
+    <div id="page">
+
+    <div id="topbar">
+        {% block topbar %}
+        <img src="{% static "assets/images/NSLSII.jpeg" %}" width="220" height="120" align="right">
+        <p> <h1 style="font-family: times; font-style:normal; font-size:40pt; color: white"> <i style="font-size: 40pt">PyLight</i>: NSLSII Data Analysis Engine </p> 
+        <!--<img src="{% static "assets/images/bnl-logo.jpeg" %}" width="200" height="80" align="right">-->
+        <!--<img src="{% static "assets/images/NSLSII.jpeg" %}" width="180" height="80" align="right">-->
+        {% endblock %}
+    </div>
+
+    <div id="secondbar">
+        {% block secondbar %}
+        <p style="font-family: times; color: white" align="right"> <a style="font-family: times; font-size:15pt; color: white;" href="/accounts/login/" align="right">logout</a> </p>
+        {% endblock %}
+    </div>    
+
+
+    <!-- <hr width=1300px size=10px color=#FF0000> -->
+
+    <!--<div id="page"> -->
+        <div id="leftbar">
+            {% block leftbar %}
+            <ul>
+                <!--<li><a href="/articles/all">Articles</a></li>-->
+                <!-- <li><a href="/admin/">Admin</a></li> -->
+            </ul>
+            {% endblock %}
+        </div>
+
+            
+        <div id="rightbar">
+            {% block rightbar %}
+            <ul>
+                <!--<li><a href="/articles/all">Articles</a></li>-->
+                <!-- <li><a href="/admin/">Admin</a></li> -->
+            </ul>
+            {% endblock %}
+        </div>
+
+        <div id="content">
+            {% block content %}This is the content area {% endblock %}
+        </div>
+
+    </div>
+</body>
+</html>
+
+
+
+

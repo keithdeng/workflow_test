@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>{% block title %}My Base Template{% endblock %}</title>
+
+    <link ref="stylesheet" type="text/css" href="{% static "assets/css/defult.css" %}">
+    </head>
+
+
+<body>
+    <div id="page">
+
+        
+        <div id="sidebar">
+            {% block sidebar %}
+            <ul>
+                <!--<li><a href="/articles/all">Fluorescence Fitting</a></li> -->
+                <!-- <li><a href="/admin/">Admin</a></li> -->
+            </ul>
+            {% endblock %}
+        </div> 
+
+        <div id="contect">
+            {% block content %}This is the content area {% endblock %}
+            <img src="{% static "assets/images/NSLSII.jpeg" %}" width="100"/>    
+        </div>
+
+        <!--<li><a href="/accounts/regiter/">New User</a></li>-->
+
+    </div>
+</body>
+</html>
+
+
+
+

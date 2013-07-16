@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block sidebar %}
+<ul>
+    <li><a href="/articles/all">Differential Phase Contrast Imaging</a></li>
+</ul>
+{% endblock %}
+
+
+{% block content %}
+
+    <h1>{{ article.title}}</h1>
+    
+    <p>parameter1: {{ article.parameter1|lower }}</p>
+    <p>file: {{article.save_to}}</p>
+    <p>notes: {{ article.notes }}</p>
+    {% if article.thumbnail %}
+    <p><img src="/static/assets/{{article.thumbnail}}" width="200"/></p>
+    {% endif %}
+
+
+    <h3>All Comments</h3>
+    {% for c in article.comment_set.all %}
+    <p>{{c.name}}: {{c.body}}</p>
+    {% endfor %}
+
+    <p><a href="/articles/add_comment/{{article.id}}">Add Comment</a></p>
+
+{% endblock %}

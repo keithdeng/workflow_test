@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block leftbar %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
+</script>
+<script> 
+    $(document).ready(function(){
+        $("#flip").click(function(){
+            $("#panel").slideToggle("slow");
+        });
+    });
+</script>
+
+<style type="text/css"> 
+    #panel,#flip
+    {
+        padding:5px;
+        text-align:center;
+        background-color:#ccffcc; /*#e5eecc;*/
+        border:solid 3px #c3c3c3;
+        border-radius: 15px;
+    }
+    #panel
+    {
+        padding:20px;
+        display:none;
+    }
+</style>
+
+
+<div id="flip">
+    <h2>Tools for HXN</h2>
+</div>
+<div id="panel">
+        <div style="border:solid 5px #A4A5AA;border-radius:15px">
+            <h3><a href="/articles/dpc_imagings">Differential Phase Contrast Imaging</a></h3>
+        </div>
+        <div style="border:solid 5px #A4A5AA;border-radius:15px">
+            <h3><a href="/articles/all">Fluorescence Map</a></h3>
+        </div>
+        <div style="border:solid 5px #A4A5AA;border-radius:15px">
+            <h3><a href="/articles/all">Tomography</a></h3>
+        </div>
+        <div style="border:solid 5px #A4A5AA;border-radius:15px">
+            <h3><a href="/articles/all">Fluorescence Tomography</a></h3>
+        </div>
+        <div style="border:solid 5px #A4A5AA;border-radius:15px">
+            <h3><a href="/articles/all">Nano Diffraction</a></h3>
+        </div>
+        <div style="border:solid 5px #A4A5AA;border-radius:15px">
+            <h3><a href="/articles/all">Ptychography</a></h3>
+        </div>
+        <div style="border:solid 5px #A4A5AA;border-radius:15px">
+            <h3><a href="/articles/all">Monte Carlo Simulation</a></h3>    
+        </div>
+    </div>
+
+    <div align="center"> <h3><a href="/articles/all_beamlines">Back to all Beamlines</a></h3> </div> 
+{% endblock %}
+
+{% block rightbar %}
+<!--<h2 align="center">History</h2>-->
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div>
+    <h2>Hard Xray Nanoprobe</h2>
+    
+    <p align="left"><h3>The Hard X-ray Nanoprobe beamline and endstation instruments (HXN) will be designed and constructed to explore new frontiers of hard x-ray microscopy applications with the highest achievable spatial resolution. Currently the available spatial resolution for scientific applications, provided by scanning x-ray microscopes in the hard x-ray regime, is limited to ~50nm, which is still insufficient for probing the nanoscale interfacial structures critical in determining properties and functionalities of material and biological systems. The HXN beamline aims to enable x-ray experiments at spatial resolutions ranging from 10 to 30 nm with an ultimate goal of ~1 nm. </h3></p>
+
+    <img src="{% static "assets/images/HXN_microscope.jpeg" %}" width="500" height="300" align="left">
+</div>
+
+
+{% endblock %}

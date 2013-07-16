@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block leftbar %}
+<ul>
+    <h3><a href="/articles/all">Tomography</a></h3>
+</ul>    
+{% endblock %}
+
+
+{% block content %}
+
+    <h2 align="center">Job created: {{ article.title }}</h2>
+    <form action="/articles/create/" method="post" enctype="multipart/form-data" style="text-align:left">{% csrf_token %}
+
+         <div style="font-size:22px;text-align:center">
+        <table border="0.1" width=600 height=300 align="center">
+            <tr>
+                <th>parameter</th>
+                <th>previous value</th>
+                <th>new value</th>
+            </tr>
+            <tr>
+                <td>title</td> 
+                <td>{{article.title}}</td>
+                <td>{{form.title}}</td>
+            </tr>
+            <tr>
+                <td>algorithm</td> 
+                <td>{{article.algorithm}}</td>
+                <td>{{form.algorithm}}</td>
+            </tr>
+            <tr>
+                <td>angle start</td> 
+                <td>{{article.angle_start}}</td>
+                <td>{{form.angle_start}}</td>
+            </tr>
+            <tr>
+                <td>angle end</td> 
+                <td>{{article.angle_end}}</td>
+                <td>{{form.angle_end}}</td>
+            </tr>
+            <tr>
+                <td>angle step</td> 
+                <td>{{article.angle_step}}</td>
+                <td>{{form.angle_step}}</td>
+            </tr>
+            <tr>
+                <td>notes</td> 
+                <td>{{article.notes}}</td>
+                <td>{{form.notes}}</td>
+            </tr>
+            <tr>
+                <td>upload file</td> 
+            <td>{{article.upload_file}}</td>
+        </tr>
+        <tr>
+            <td>{{form.upload_file}}</td>
+            </tr>
+        </table>
+        <input size="100%" type="submit" name="submit" value="Create a job">    
+        </div>    
+    <!--<p style="font-size:22px">Edit this job. <a href="/articles/delete/{{article.id}}"><img src="/static/images/icon_add.gif" width="20" ></a></p>
+    <p style="font-size:22px">Delete this job. <a href="/articles/delete/{{article.id}}"><img src="/static/images/icon_delete.gif" width="20" ></a></p>-->
+    
+    <h3><a href="/articles/run/{{article.id}}">Submit this job</a></h3>
+    
+    <hr>
+    
+    <div align="center">
+        <h2>Previous Results and Images </h2>
+        <p><img src="/static/images/user1_{{article.id}}.jpeg" width="350" height="350" align="center"></p>
+    </div>
+
+    <hr>
+    
+    <div align="center">
+        <h2>All Comments</h2>
+        {% for c in article.comment_set.all %}
+        <p>{{c.name}}: {{c.body}}</p>
+        {% endfor %}
+    </div>
+
+    <p><a href="/articles/add_comment/{{article.id}}">Add Comment</a></p>
+
+    
+{% endblock %}
+
+
+{% block rightbar %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
+</script>
+
+<script> 
+$(document).ready(function(){
+    $("#flip").click(function(){
+    $("#panel").slideToggle("slow");
+});
+});
+</script>
+
+<style type="text/css"> 
+    #panel,#flip
+    {
+        padding:5px;
+        text-align:center;
+        background-color:#ccffcc;
+        border:solid 2px #000000;
+        border-radius: 15px;
+    }
+    #panel
+    {
+        padding:10px;
+        display:none;
+    }
+</style>
+
+<h2 id="flip" align="center">History of tomography reconstruction</h2>
+<div id="panel">
+<ol>    
+{% for item in articles %}
+    <div style="width:95%;height:80px;background-color:#c2d1ff;text-align:center; border:solid 4px #000000; border-radius:10px" align="left">
+    <li style="color:green">{{ item.title }}  
+        <a href="/articles/get/{{ item.id }}/" style="font-size:30px;text-align:left"><img src="/static/images/eye_icon.png" width="16" ></a>
+        <a href="/articles/delete/{{article.id}}"><img src="/static/images/icon_delete.gif" width="16" ></a>
+        <p style="font-size:12px">{{ item.pub_date }}</p>
+    </li>
+    </div>    
+{% endfor %}
+</ol>
+</div>
+{% endblock %}
+
+
+
+
+

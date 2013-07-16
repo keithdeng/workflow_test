@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>{% block title %}My Base Template{% endblock %}</title>
+
+    <style type="text/css">
+
+        p.title1 {color:white;font-size:25pt;}
+        p.title2 {color:white;font-size:20pt}
+        p.general {color:white;font-size:15pt}
+
+        body {
+            text-align: center;
+        }
+
+        #page {
+            width: 600px;
+            height:350px;
+            text-align: center;
+            margin: 200px auto 500px auto;
+            border: 5px solid #002186;
+	        background-color: #002186; /*#A4A5AA;*/
+	    }
+
+        #topbar {
+            float: left;
+	        margin: 0px auto 0px auto;
+            width: 600px;
+            height: 50px;
+            /*border: 5px solid #f00; */
+            background-color: #002186;
+            padding: 0px;
+        }
+
+        #content {
+            text-align: center;
+	        margin: 160px auto 0px auto;
+            width:600px;
+            height: 180px;
+            /*border: 5px solid #f00;*/
+            padding-top: 10px;
+	        background-color: black; /*#A4A5AA;*/
+        }
+    </style>
+</head>
+
+
+<body>
+    <div id="page">
+        <div id="topbar">
+            {% block topbar %} This is topbar area {% endblock %}
+        </div>
+        <div id="content">
+            {% block content %}This is the content area {% endblock %}
+        </div>
+
+    </div>
+</body>
+</html>
+
+
+
+
